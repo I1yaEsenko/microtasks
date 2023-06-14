@@ -5,6 +5,7 @@ import {Header} from "./site/Header";
 import {Footer} from "./site/Footer";
 import {CarsComponent} from "./Components/CarsComponent";
 import Button from "./Components/button";
+import FilterComponent from "./Components/filterComponent";
 
 function App() {
 
@@ -49,6 +50,8 @@ function App() {
             <button onClick={onClickHandler}>+</button>
             <button onClick={onClickHandlerZero}>0</button>
 
+            -----------------------------------------------
+            <FilterComponent/>
         </div>
     )
         ;
