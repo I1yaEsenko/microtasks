@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Body} from "./site/Body";
 import {Header} from "./site/Header";
@@ -23,6 +23,16 @@ function App() {
     }
 
 
+    let[a, setA] = useState(1)
+
+    const onClickHandler = () =>{
+        setA(++a)
+
+    }
+
+    const onClickHandlerZero = () => {
+        setA(0)
+    }
     return (
 
 
@@ -34,6 +44,11 @@ function App() {
             <Button name={"myButton"} callback={() => ButtonFoo("Im Ilya")}/>
             <Button name={"myButton"} callback={() => ButtonFoo2("Im Jeka")}/>
             <Button name={"stupid button"} callback={() => (console.log("Im stupid button"))}/>
+
+            <h1>{a}</h1>
+            <button onClick={onClickHandler}>+</button>
+            <button onClick={onClickHandlerZero}>0</button>
+
         </div>
     )
         ;
