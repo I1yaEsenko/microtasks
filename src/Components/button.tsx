@@ -1,11 +1,11 @@
 import React from 'react';
 
-type ButtonType = {
+type ButtonPropsType = {
     name:string
     callback:()=>void;
 }
 
-const Button = (props:ButtonType) => {
+export const Button = (props:ButtonPropsType) => {
 
     const onClickHeandler = () => {
         props.callback()
@@ -18,4 +18,3 @@ const Button = (props:ButtonType) => {
     );
 };
 
-export default Button;

@@ -4,8 +4,10 @@ import {Body} from "./site/Body";
 import {Header} from "./site/Header";
 import {Footer} from "./site/Footer";
 import {CarsComponent} from "./Components/CarsComponent";
-import Button from "./Components/button";
+import {Button} from "./Components/button";
 import FilterComponent from "./Components/filterComponent";
+import FullInput from "./Components/FullInput";
+import {Input} from "./Components/Input";
 
 export type MoneyType = {
     banknots: string
@@ -73,6 +75,25 @@ function App() {
     }
 
 
+    // FullInput
+    let [message, setMessage] = useState([
+            {message: 'message1'},
+            {message: 'message2'},
+            {message: 'message3'},
+    ])
+
+    const addMessage = (title:string) => {
+        let newMessage = {message: title}
+        setMessage([newMessage, ...message])
+    }
+
+    let [title, setTitle] = useState('')
+
+    const callbackButtonHandler = () => {
+        addMessage(title)
+        setTitle('')
+    }
+
     return (
 
 
@@ -81,9 +102,9 @@ function App() {
             <Body titleForBody={'Title for body'}/>
             <Footer titleForFooter={'Title for footer'}/>
             <CarsComponent cars={topCars}/>
-            <Button name={"myButton"} callback={() => ButtonFoo("Im Ilya")}/>
-            <Button name={"myButton"} callback={() => ButtonFoo2("Im Jeka")}/>
-            <Button name={"stupid button"} callback={() => (console.log("Im stupid button"))}/>
+            {/*<Button name={"myButton"} callback={() => ButtonFoo("Im Ilya")}/>*/}
+            {/*<Button name={"myButton"} callback={() => ButtonFoo2("Im Jeka")}/>*/}
+            {/*<Button name={"stupid button"} callback={() => (console.log("Im stupid button"))}/>*/}
 
             <h1>{a}</h1>
             <button onClick={onClickHandler}>+</button>
@@ -92,7 +113,20 @@ function App() {
             -----------------------------------------------
             <FilterComponent currentMoney={currentMoney} foo={onClickFilterHandler}/>
 
+            <div style={{marginTop:'40px', marginLeft:'40px'}}>
+                {/*<FullInput addMessage={addMessage}/>*/}
 
+                <Input setTitle={setTitle} title={title}/>
+                <Button name={'+'} callback={callbackButtonHandler}/>
+
+                {message.map((el,index) => {
+                    return (
+                    <div key={index}>{el.message}</div>
+                    )
+                })}
+
+
+            </div>
         </div>
     )
         ;
